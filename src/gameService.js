@@ -18,12 +18,53 @@ class GameService {
     createGames(){
         const gameInfo = {
             game: {
-                title: titleValue,
-                description: descriptionValue
+                title: titleValue.value,
+                description: descriptionValue.value,
+                score: gameScoreValue.value,
+                img: imgValue.value,
+                list_id: 1
             }
         }
-        fetch(this.port + `/games`)
+        const configObject = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            },
+            body: JSON.stringify(gameInfo)
+        }
+        fetch(this.port + `/games`, configObject)
         .then(resp => resp.json())
-        .then(data => console.log(data))
+        .then(data => {
+            const g = new Game(data)
+            g.toDom()
+        })
+    }
+
+    updateGame(game){
+        const {title, description, id} = game
+        const gameInfo = {
+            title,
+            description
+        }
+
+        const configObject = {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            },
+            body: JSON.stringify(gameInfo)
+        }
+        fetch(`${this.port}/games/${id}`, configObject)
+        .then( game.render() )
+    }
+
+    deleteGame(e){
+        const id = e.target.dataset.id
+        e.target.parentElement.remove()
+        fetch(`${this.port}/games/${id}`, {method: 'DELETE'})
+        .then(resp => resp.json())
+        .then(json => alert(json.message))
     }
 }

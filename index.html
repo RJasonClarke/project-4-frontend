@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game List</title>
+    <link rel="stylesheet" href="style.css">
     <script defer src='src/game.js'></script>
     <script defer src='src/gameService.js'></script>
     <script defer src='src/list.js'></script>
@@ -14,12 +15,18 @@
 <body>
     <div id="game-form">
         <form id='game-form'>
-            <h2>List a new game</h2>
-            <label for='game-title'>Title:</label>
+            <h2>List A New Game</h2>
+            <label for='game-title'>Game Title:</label>
             <input type='text' name='title' id='game-title'>
             <br>
             <label for='game-description'>Description:</label>
             <input type='text' name='description' id='game-description'>
+            <br>
+            <label for='game-score'>Game Score:</label>
+            <input type='text' name='score' id='game-score'>
+            <br>
+            <label for='game-image'>Image URL:</label>
+            <input type='text' name='image' id='game-image'>
             <br>
             <input type='submit' value='Post Game'>
         </form>

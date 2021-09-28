@@ -1,8 +1,10 @@
-const port = 'http://127.0.0.1:3000/';
+const port = 'http://127.0.0.1:3000';
 const gameCall = new GameService(port);
 const form = document.getElementById('game-form')
 const titleValue = document.getElementById('game-title')
-descriptionValue = document.getElementById('game-description')
+const descriptionValue = document.getElementById('game-description')
+const gameScoreValue = document.getElementById('game-score')
+const imgValue = document.getElementById('game-image')
 
 gameCall.getGames()
 
