@@ -3,46 +3,34 @@ body {
     background-color: rgb(0, 204, 153);
 }
 
-h2{
-    margin: auto;
+h1 {
+    text-align: center;
+    border-top: black solid 1px;
+    border-bottom: black solid 1px;
 }
 
-p.score{
+div{
     text-align: center;
 }
 
-form#game-form {
-    text-align: center;
-    border-style: solid;
-    margin: 50px;
+img{
+    border-radius: 5px;
 }
 
-div#game-container{
-    margin-top: 5px;
-    list-style-type: none;
-}
-
-#game-container {
-    border-style: solid;
-    border-width: 1px;
-    background-color: rgb(255, 255, 254);
-    width: 271px;
-    box-shadow: 5px 10px rgb(0, 107, 80);
-}
-
-h3.title {
-    text-align: center;
-    margin: auto;
-}
-
-label{
+button{
+    border: none;
+    border-radius: 15px;
+    background-color: black;
+    color: rgb(0, 204, 153);
     font-weight: bold;
 }
 
-form#game-form{
-    margin: 0px
-}
-
-div#game-1{
-    margin-bottom: 20px;
+div#card{
+    width: 271px;
+    border: black solid 1px;
+    border-radius: 5px;
+    box-shadow: 5px 10px rgb(0, 138, 103);
+    float: left;
+    padding: 5px;
+    margin: 5px;
 }

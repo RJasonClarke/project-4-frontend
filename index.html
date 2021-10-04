@@ -4,16 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game List</title>
+    <title>GAMELIST</title>
     <link rel="stylesheet" href="style.css">
     <script defer src='src/game.js'></script>
-    <script defer src='src/gameService.js'></script>
     <script defer src='src/list.js'></script>
-    <script defer src='src/listService.js'></script>
     <script defer src='index.js'></script>
 </head>
 <body>
-    <div id="game-form">
+    <h1>GAMELIST</h1>
+    <div id="list-btns">
+        <button>NEW LIST</button>
+        <button>DELETE LIST</button>
+    </div>
+    <div id="game-btns" style="display: none;">
+        <button>ADD GAME</button>
+        <button>DELETE GAME</button>
+    </div>
+    <br>
+    <div id="game-form" style="display: none;">
         <form id='game-form'>
             <h2>List A New Game</h2>
             <label for='game-title'>Game Title:</label>

@@ -1,16 +1,10 @@
-const port = 'http://127.0.0.1:3000';
-const gameCall = new GameService(port);
-const form = document.getElementById('game-form')
-const titleValue = document.getElementById('game-title')
-const descriptionValue = document.getElementById('game-description')
-const gameScoreValue = document.getElementById('game-score')
-const imgValue = document.getElementById('game-image')
+const port = 'http://127.0.0.1:3000'
+const listCont = document.getElementById("list-container")
+const gameCont = document.getElementById("game-container")
+const listBtns = document.getElementById("list-btns")
+const gameBtns = document.getElementById("game-btns")
+const gameForm = document.getElementById("game-form")
 
-gameCall.getGames()
-
-form.addEventListener('submit', handleSubmit)
-
-function handleSubmit(e){
-    e.preventDefault();
-    gameCall.createGames()
-}
+document.addEventListener("DOMContentLoaded", function(){
+    List.getLists()
+})
