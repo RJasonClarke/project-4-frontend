@@ -1,5 +1,4 @@
 class List{
-
     static all = []
 
     constructor({id, title}){
@@ -9,34 +8,84 @@ class List{
         List.all.push(this)
     }
 
-    static getLists(){
+    static fetchLists(){
         fetch(port + "/lists")
         .then(resp => resp.json())
         .then(listData => {
             listData.forEach(list => {
                 let newList = new List(list)
-                newList.addToDom()               
-            });
+                newList.addToDom()
+            })
         })
     }
 
-    static eventHandler(e){
-        listCont.style.display = "none"
-        listBtns.style.display = "none"
+    static createList(){
+        event.preventDefault()
+        let title = document.getElementById("list-title").value
+        let listObject = {
+            title: title
+        }
+        let config = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(listObject)
+        }
 
+        fetch(`${port}/lists`, config)
+        .then(resp => resp.json())
+        .then(listData => {
+            let newList = new List(listData)
+            newList.addToDom()
+            listForm.style.display = "none"
+            newListBtn.style.display = ""
+        })
+    }
+
+    static deleteList(){
+        const id = event.target.id
+        event.target.parentElement.remove()
+        fetch(port + `/lists/${id}`, {method: 'DELETE'})
+        .then(response => response.json())
+        .then(json => alert(json.message))
+    }
+
+    handleClick(e){
+        if(e.target.innerText === "x"){
+            List.deleteList(e)
+        } else {
+            List.showGames()
+        }
+    }
+
+    static showForm(){
+        newListBtn.addEventListener("click", () => {
+            newListBtn.style.display="none"
+            listForm.style.display=""
+        })
+        listForm.addEventListener("submit", List.createList)
+    }
+
+    static showGames(){
+        listCont.style.display = "none"
         gameCont.style.display = ""
+        newListBtn.style.display = "none"
         gameBtns.style.display = ""
-        let listId = e.target.id
-        Game.getGames(listId)
+        let listId = parseInt(event.target.id)
+        Game.fetchGames(listId)
     }
 
     addToDom(){
-        let innerCont = document.createElement("div")
-        listCont.appendChild(innerCont).innerHTML = `
-            <h3 id=${this.id}>${this.title}</h3>
+        listCont.innerHTML +=
         `
-        innerCont.addEventListener("click", List.eventHandler)
+        <div>
+        <h2 id=${this.id}>${this.title}</h2>
+        <button id=${this.id}>x</button>
+        </div>
+        `
+
+        listCont.addEventListener("click", this.handleClick)
     }
-
-
 }

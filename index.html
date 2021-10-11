@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GAMELIST</title>
-    <link rel="stylesheet" href="style.css">
     <script defer src='src/game.js'></script>
     <script defer src='src/list.js'></script>
     <script defer src='index.js'></script>
@@ -13,15 +12,13 @@
 <body>
     <h1>GAMELIST</h1>
     <div id="list-btns">
-        <button>NEW LIST</button>
-        <button>DELETE LIST</button>
+        <button id="new-list">NEW LIST</button>
     </div>
     <div id="game-btns" style="display: none;">
-        <button>ADD GAME</button>
-        <button>DELETE GAME</button>
+        <button id="new-game">ADD GAME</button>
     </div>
     <br>
-    <div id="game-form" style="display: none;">
+    <div id="game-form-cont" style="display: none;">
         <form id='game-form'>
             <h2>List A New Game</h2>
             <label for='game-title'>Game Title:</label>
@@ -30,16 +27,23 @@
             <label for='game-description'>Description:</label>
             <input type='text' name='description' id='game-description'>
             <br>
-            <label for='game-score'>Game Score:</label>
-            <input type='text' name='score' id='game-score'>
-            <br>
             <label for='game-image'>Image URL:</label>
             <input type='text' name='image' id='game-image'>
             <br>
-            <input type='submit' value='Post Game'>
+            <input type='hidden' value="1" id='list_id'>
+            <br>
+            <input id="submit-btn" type='submit' value='Post Game'>
+        </form>
+    </div>
+    <div id="list-form-cont" style="display: none;">
+        <form id='list-form'>
+            <h2>CREATE NEW LIST</h2>
+            <label for='list-title'>List Title:</label>
+            <input type='text' name='title' id='list-title'>
+            <input type='submit' value='POST LIST'>
         </form>
     </div>
     <div id="list-container"></div>
-    <div id="game-container"></div>
+    <div id="game-container" style="display: none;"></div>
 </body>
 </html>
