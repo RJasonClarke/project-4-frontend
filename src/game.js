@@ -71,6 +71,8 @@ class Game{
     handleClick() {
         if(event.target.innerText === "Delete"){
             Game.deleteGame()
+        } else if (event.target.innerText === "Edit"){
+            Game.editForm()
         }
     }
 
@@ -83,6 +85,7 @@ class Game{
         <h3>${this.title}</h3>
         <p>${this.description}</p>
         <input type="hidden" value=${this.list_id} id="list_id">
+        <button id=${this.id}>Edit</button>
         <button id=${this.id}>Delete</button>
         `
 
