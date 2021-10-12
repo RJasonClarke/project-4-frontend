@@ -1,11 +1,15 @@
 class Game{
 
+    static all = []
+
     constructor({id, title, description, img, list_id}){
         this.id = id
         this.title = title
         this.description = description
         this.img = img
         this.list_id = list_id
+
+        Game.all.push(this)
     }
 
     static fetchGames(listId){
@@ -14,7 +18,7 @@ class Game{
         .then(gameData => {
             gameData.forEach(game => {
                 let newGame = new Game(game)
-                if(game.list_id === listId){
+                if(newGame.list_id === listId){
                     newGame.addToDom()
                 }
             })
@@ -62,6 +66,7 @@ class Game{
 
     static showForm(){
         newGameBtn.addEventListener("click", () => {
+            newListBtn.style.display="none"
             gameBtns.style.display="none"
             gameForm.style.display=""
         }) 
@@ -71,8 +76,6 @@ class Game{
     handleClick() {
         if(event.target.innerText === "Delete"){
             Game.deleteGame()
-        } else if (event.target.innerText === "Edit"){
-            Game.editForm()
         }
     }
 
@@ -85,7 +88,6 @@ class Game{
         <h3>${this.title}</h3>
         <p>${this.description}</p>
         <input type="hidden" value=${this.list_id} id="list_id">
-        <button id=${this.id}>Edit</button>
         <button id=${this.id}>Delete</button>
         `
 

@@ -15,6 +15,7 @@ class List{
             listData.forEach(list => {
                 let newList = new List(list)
                 newList.addToDom()
+                newList.addToDropdown()
             })
         })
     }
@@ -41,6 +42,7 @@ class List{
             newList.addToDom()
             listForm.style.display = "none"
             newListBtn.style.display = ""
+            newGameBtn.style.display = ""
         })
     }
 
@@ -63,6 +65,7 @@ class List{
     static showForm(){
         newListBtn.addEventListener("click", () => {
             newListBtn.style.display="none"
+            newGameBtn.style.display="none"
             listForm.style.display=""
         })
         listForm.addEventListener("submit", List.createList)
@@ -72,7 +75,7 @@ class List{
         listCont.style.display = "none"
         gameCont.style.display = ""
         newListBtn.style.display = "none"
-        gameBtns.style.display = ""
+        gameBtns.style.display = "none"
         let listId = parseInt(event.target.id)
         Game.fetchGames(listId)
     }
@@ -87,5 +90,12 @@ class List{
         `
 
         listCont.addEventListener("click", this.handleClick)
+    }
+
+    addToDropdown(){
+        const option = document.createElement("option")
+        option.value = this.id
+        option.innerText = this.title
+        document.getElementById("list_id").appendChild(option)
     }
 }

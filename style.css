@@ -1,0 +1,32 @@
+h1{
+    margin: auto;
+}
+
+h2{
+    margin: auto;
+}
+
+div{
+    margin-top: 5px;
+}
+
+button{
+    background-color: black;
+    color: rgb(43, 187, 132);
+    border-style: none;
+    border-radius: 15px;
+}
+
+input{
+    background-color: black;
+    color: rgb(43, 187, 132);
+}
+
+select{
+    background-color: black;
+    color: rgb(43, 187, 132);
+}
+
+body{
+    background-color: rgb(43, 187, 132);
+}

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GAMELIST</title>
+    <link rel="stylesheet" href="style.css">
     <script defer src='src/game.js'></script>
     <script defer src='src/list.js'></script>
     <script defer src='index.js'></script>
@@ -14,13 +15,13 @@
     <div id="list-btns">
         <button id="new-list">NEW LIST</button>
     </div>
-    <div id="game-btns" style="display: none;">
-        <button id="new-game">ADD GAME</button>
+    <div id="game-btns">
+        <button id="new-game">NEW GAME</button>
     </div>
     <br>
     <div id="game-form-cont" style="display: none;">
         <form id='game-form'>
-            <h2>List A New Game</h2>
+            <h2>Create A New Game</h2>
             <label for='game-title'>Game Title:</label>
             <input type='text' name='title' id='game-title'>
             <br>
@@ -30,14 +31,15 @@
             <label for='game-image'>Image URL:</label>
             <input type='text' name='image' id='game-image'>
             <br>
-            <input type='hidden' value="1" id='list_id'>
+            <label for="game-list">List:</label>
+            <select id='list_id'></select>
             <br>
             <input id="submit-btn" type='submit' value='Post Game'>
         </form>
     </div>
     <div id="list-form-cont" style="display: none;">
         <form id='list-form'>
-            <h2>CREATE NEW LIST</h2>
+            <h2>Create A New List</h2>
             <label for='list-title'>List Title:</label>
             <input type='text' name='title' id='list-title'>
             <input type='submit' value='POST LIST'>
